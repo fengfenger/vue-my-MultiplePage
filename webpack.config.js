@@ -60,7 +60,7 @@ module.exports = {
     },
     devtool: 'eval-source-map',
     resolve: {
-        alias:alias,
+        alias: alias,
         extensions: ['', '.js', '.vue', '.scss', '.png', '.jpg'],
     },
     //babel重要的loader在这里
@@ -111,7 +111,8 @@ module.exports = {
     },
     vue: {
         loaders: {
-            css: extractSASS.extract("style-loader", "css-loader?sourceMap")
+            css: extractSASS.extract("style-loader", "css-loader?sourceMap"),
+            scss: extractSASS.extract("style-loader", "css-loader?sourceMap", "sass-loader"),
         }
     },
     plugins: plugins
