@@ -1,10 +1,7 @@
 <style lang="scss">
 
+@import "../../../styles/views/demo/demo.scss";
 
-
-h3{
-    background: blue;
-}
 </style>
 
 <template>
