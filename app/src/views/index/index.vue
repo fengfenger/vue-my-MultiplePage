@@ -1,6 +1,6 @@
 <style lang="scss">
 
-@import "../../../styles/indexMain.scss";
+
 
 </style>
 

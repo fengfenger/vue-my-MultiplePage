@@ -1,6 +1,9 @@
 <style lang="scss">
 
-@import "../../../styles/demo2Main.scss";
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
 
 </style>
 

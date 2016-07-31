@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import IndexView from './index.vue'
+import Vue from 'vue';
+import IndexView from './index.vue';
 
 Vue.config.debug = true;
 var VueAsyncData = require('vue-async-data');
