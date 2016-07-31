@@ -1,8 +1,11 @@
-<style lang="scss" scoped>
+<style lang="scss">
 h3{
     background: yellow;
 }
 
+.mint-toast-text{
+    font-size: 20px;
+}
 
 </style>
 <template>

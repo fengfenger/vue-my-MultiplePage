@@ -9,10 +9,6 @@ var extractSASS = new ExtractTextPlugin('[name].css', {
     allChunks: true
 });
 
-// 判断开发环境还是正式环境
-var isProduction = function() {
-    return process.env.NODE_ENV === 'production';
-}
 
 // webpack扩展功能
 var containerPath = path.resolve('./');

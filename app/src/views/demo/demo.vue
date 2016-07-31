@@ -1,9 +1,7 @@
 <style lang="scss">
 
 
-.mint-toast-text{
-    font-size: 20px;
-}
+
 h3{
     background: blue;
 }
