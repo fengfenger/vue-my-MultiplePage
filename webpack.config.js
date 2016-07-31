@@ -54,7 +54,7 @@ module.exports = {
             //.scss 文件想要编译，scss就需要这些东西！来编译处理
             {
                 test: /\.scss$/,
-                loader: extractSASS.extract(['style-loader', 'css-loader?sourceMap', 'sass-loader'])
+                loader: extractSASS.extract(['css-loader?sourceMap', 'sass-loader'])
             }, {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url-loader?limit=8192&name=images/[name].[ext]'

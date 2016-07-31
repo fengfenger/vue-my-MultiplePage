@@ -1,3 +1,5 @@
+import '../../../styles/main.scss';
+
 import Vue from 'vue'
 import Demo2 from './demo2.vue'
 
