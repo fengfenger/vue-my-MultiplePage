@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "gulp server",
-    "dev": " gulp clean | webpack --watch --colors --config webpack.config.js"
+    "dev": " gulp clean | webpack --watch --colors --config webpack.config.js",
+    "build": "gulp clean | NODE_ENV=production webpack --config webpack.config.js --optimize-minimize"
   },
   "author": "",
   "license": "ISC",

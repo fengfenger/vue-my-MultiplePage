@@ -20,32 +20,6 @@ var compile = require('./bin/compile.js');
 var getEntry = require('./bin/getEntry.js');
 var alias = require('./bin/alias.js');
 
-//  添加插件
-var plugins = [];
-
-//  切割css文件
-plugins.push(extractSASS);
-
-//  提取公共文件
-plugins.push(new webpack.optimize.CommonsChunkPlugin('common', 'common.js'));
-
-//  处理html
-var pages = getEntry('./app/src/views/**/*.html');
-for (var chunkname in pages) {
-    var conf = {
-        filename: chunkname + '.html',
-        template: pages[chunkname],
-        inject: true,
-        minify: {
-            removeComments: true,
-            collapseWhitespace: false
-        },
-        chunks: ['common', chunkname],
-        hash: true,
-    }
-    plugins.push(new HtmlwebpackPlugin(conf));
-}
-
 
 // 入口文件
 var entrys = getEntry('./app/src/views/**/*.js');
@@ -58,7 +32,6 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '[name].[hash].js'
     },
-    devtool: 'eval-source-map',
     resolve: {
         alias: alias,
         extensions: ['', '.js', '.vue', '.scss', '.png', '.jpg'],
@@ -115,5 +88,52 @@ module.exports = {
             scss: extractSASS.extract("style-loader", "css-loader?sourceMap", "sass-loader"),
         }
     },
-    plugins: plugins
+    plugins: [
+        extractSASS,
+        new webpack.optimize.CommonsChunkPlugin('common', 'common.js')
+    ]
+};
+
+// 判断环境
+var prod = process.env.NODE_ENV === 'production';
+console.log(prod);
+module.exports.plugins = (module.exports.plugins || []);
+if (prod) {
+    module.exports.devtool = 'source-map';
+    module.exports.plugins = module.exports.plugins.concat([
+        // 借鉴vue官方的生成环境配置
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.NoErrorsPlugin(),
+        new webpack.BannerPlugin('vue')
+    ]);
+} else {
+    module.exports.devtool = 'eval-source-map';
+}
+
+
+//  处理html
+var pages = getEntry('./app/src/views/**/*.html');
+for (var chunkname in pages) {
+    var conf = {
+        filename: chunkname + '.html',
+        template: pages[chunkname],
+        inject: true,
+        minify: {
+            removeComments: true,
+            collapseWhitespace: false
+        },
+        chunks: ['common', chunkname],
+        hash: true,
+    }
+    module.exports.plugins.push(new HtmlwebpackPlugin(conf));
 }

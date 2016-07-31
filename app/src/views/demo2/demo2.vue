@@ -1,8 +1,6 @@
 <style lang="scss">
 
-#app{
-    background:red;
-}
+@import "../../../styles/demo2Main.scss";
 
 </style>
 

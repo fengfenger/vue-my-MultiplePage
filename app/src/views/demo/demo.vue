@@ -1,9 +1,12 @@
 <style lang="scss">
 
-#app{
-    background:red;
-}
 
+.mint-toast-text{
+    font-size: 20px;
+}
+h3{
+    background: blue;
+}
 </style>
 
 <template>
@@ -11,14 +14,15 @@
     <ul>
         <li>tttttttttttttttttttt</li>
     </ul>
+    <test></test>
 
 
 </template>
 
 <script>
 
-
-
+import { Toast } from 'mint-ui';
+import Test from '../../components/demo/test.vue';
 export default {
     data: function() {
         return {
@@ -42,7 +46,14 @@ export default {
         }
     },
     ready() {
-
+        Toast({
+          message: 'Upload Complete',
+          position: 'bottom',
+          duration: 225000
+        });
+    },
+    components:{
+        'test': Test
     }
 }
 
