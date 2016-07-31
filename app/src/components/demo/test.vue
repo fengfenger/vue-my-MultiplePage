@@ -3,9 +3,6 @@ h3{
     background: yellow;
 }
 
-.mint-toast-text{
-    font-size: 20px;
-}
 
 </style>
 <template>

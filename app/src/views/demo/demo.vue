@@ -17,7 +17,10 @@
 <script>
 
 import { Toast } from 'mint-ui';
+// 进行效果上面的覆盖写法
+import '../../../styles/module/toast.scss';
 import Test from '../../components/demo/test.vue';
+
 export default {
     data: function() {
         return {
